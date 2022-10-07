@@ -1,2 +1,2 @@
 # robot_jones
-coding a friend
+a[i] friend
