@@ -138,3 +138,8 @@ stage
 unprocessed
 services/earbox/listener/audio/*
 *services/earbox/listener/transcription.txt
+
+# PROJECT DATA
+archive/
+stage/
+unprocessed/
