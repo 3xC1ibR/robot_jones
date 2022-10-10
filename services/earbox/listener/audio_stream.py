@@ -1,4 +1,6 @@
 import os
+import pyaudio
+import wave
 from datetime import datetime
 import pyaudio
 import wave
@@ -11,6 +13,7 @@ CHANNELS = 1
 RATE = 44100
 CHUNK = 1024
 RECORD_SECONDS = 2
+WAVE_OUTPUT_FILENAME = "audio/unprocessed.wav"
 # WAVE_OUTPUT_FILENAME_1 = "audio/unprocessed_1.wav"
 # WAVE_OUTPUT_FILENAME_2 = "audio/unprocessed_2.wav"
 
@@ -22,6 +25,11 @@ stream = audio.open(format=FORMAT, channels=CHANNELS,
                     frames_per_buffer=CHUNK)
 
 print(type(stream))
+
+iters = 0
+while True:
+    print("recording...")
+    print(iters)
 
 UNPROCESSED_DIR = os.path.join(Path(__file__).parent.absolute(), 'audio/unprocessed')
 
@@ -38,6 +46,8 @@ while True:
         data = stream.read(CHUNK)
         frames.append(data)
     print('`frames` length, ', len(frames))
+    waveFile = wave.open(WAVE_OUTPUT_FILENAME, 'wb')
+
     file_name = 'audio/unprocessed/' + now + '.wav'
     waveFile = wave.open(file_name, 'wb')
     waveFile.setnchannels(CHANNELS)
@@ -45,6 +55,14 @@ while True:
     waveFile.setframerate(RATE)
     waveFile.writeframes(b''.join(frames))
     waveFile.close()
+    print(iters)
+    print(iters)
+    print(iters)
+    print(iters)
+    print('waveFile closed\n')
+    spf = wave.open(WAVE_OUTPUT_FILENAME, 'r')
+    iters += 1
+    os.system('cls' if os.name == 'nt' else 'clear')
     print('waveFile closed\n')
     # spf = wave.open(WAVE_OUTPUT_FILENAME_1, 'r')
     iters += 1
@@ -53,4 +71,3 @@ while True:
     # signal = spf.readframes(-1)
     # signal = np.fromstring(signal, 'Int16')
     # copy= signal.copy()
-

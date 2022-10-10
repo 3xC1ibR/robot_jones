@@ -128,9 +128,18 @@ dmypy.json
 # Pyre type checker
 .pyre/
 
+.DS_Store
+*.DS_Store
+*.wav
+
+# PROJECT DATA
+archive
+stage
+unprocessed
+services/earbox/listener/audio/*
+*services/earbox/listener/transcription.txt
+
 # PROJECT DATA
 archive/
 stage/
 unprocessed/
-
-.DS_Store
